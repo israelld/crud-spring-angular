@@ -348,4 +348,6 @@ A anotação @CrossOrigin("*") define quem pode interagir com os endpoints.
 
 @GetMapping, @PostMapping, @PutMapping e @DeleteMapping são os verbos HTTP para que haja a comunicação REST.
 
-E com isso
+E com isso já podemos testar o backend no Postman.
+
+> Postman
