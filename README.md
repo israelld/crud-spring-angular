@@ -348,6 +348,21 @@ A anotação @CrossOrigin("*") define quem pode interagir com os endpoints.
 
 @GetMapping, @PostMapping, @PutMapping e @DeleteMapping são os verbos HTTP para que haja a comunicação REST.
 
-E com isso já podemos testar o backend no Postman.
+Por fim, é preciso "settar" algumas configurações no arquivo "applications.properties", referentes ao banco de dados que foi instalado na máquina, onde será necessário dizer à aplicação a senha e login do banco de dados que foi definido na sua instalação, pra isso, basta adicionar o seguinte código:
+
+```properties
+server.port=8080
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.defer-datasource-initialization=true
+spring.datasource.url=jdbc:mysql://localhost:/crud-db?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.show-sql=true
+spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+```
+
+E com isso já podemos testar o backend no Postman, basta clicar com o botão direito na classe principal da aplicação "CrudApplication" e clicar na opção "run" (Ctrl + Shift + F10)
+
+<img style="border-radius: 1%;" src="assets/estrutura-back-end.png" width="500px;" alt=""/>
 
 > Postman
