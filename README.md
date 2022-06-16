@@ -4,11 +4,11 @@
 
 Um simples crud que serve como base para um desenvolvimento full-stack inicial de uma aplicação web que utiliza Java, Spring Boot e Angular, salvando tudo em um repositório utilizando git. 
 
-Nada teórico vai ser mostrado aqui, apenas um passo a passo técnico para servir de consulta. Para extender a aplicação e o conhecimento, basta dar uma "googlada" nos termos e eventuais erros que tudo vai fazendo sentido e o aprendizado vai fluindo.
+Nada teórico vai ser mostrado aqui, apenas um passo a passo técnico para servir de consulta. Para estender a aplicação e o conhecimento, basta dar uma "googlada" nos termos e eventuais erros que tudo vai fazendo sentido e o aprendizado vai fluindo.
 
 O ideal é já ter uma base de conhecimento em Lógica de Programação, POO, Java, Banco de Dados Relacional e TypeScript.
 
-obs: Foi utilizado o Windows 10 como Sistema Operacional, então algumas alterações terão que ser feitas para quando utilizar alguma distribuição Linux (ou Mac). 
+Obs: Foi utilizado o Windows 10 como Sistema Operacional, então algumas alterações terão que ser feitas para quando utilizar alguma distribuição Linux (ou Mac). 
 
 <br>
 
@@ -16,7 +16,7 @@ obs: Foi utilizado o Windows 10 como Sistema Operacional, então algumas altera�
 
 
 - Git
-  - também criar conta no github 
+  - também criar conta no GitHub 
 
 - Java 8+
 
@@ -24,11 +24,11 @@ obs: Foi utilizado o Windows 10 como Sistema Operacional, então algumas altera�
 
 - SGBD (DBeaver, Workbench)
 
-- Node.js lts 
+- Node.js LTS 
 
 - Angular CLI
 
-- Editor de texto (VScode, Atom, notepad++, etc...)
+- Editor de texto (VScode, Atom, Notepad++, etc...)
 
 - IDE (IntelliJ, Eclipse, etc...)
 
@@ -44,9 +44,9 @@ Um usuário cadastra seu nome e vai adicionando conteúdos que ele consome, como
 
 <br>
 
-## Git e Github
+## Git e GitHub
 
-No site do github com sua conta logada, ir em "Repositórios".
+No site do GitHub com sua conta logada, ir em "Repositórios".
 
 <img style="border-radius: 1%;" src="assets/repositories.png" width="500px;" alt=""/>
 
@@ -62,7 +62,7 @@ Marque para adicionar o README (ou não, você quem sabe), e crie o repositório
 
 <img style="border-radius: 1%;" src="assets/criar-repositorio.png" width="500px;" alt=""/>
 
-Com o repositório criar, vá em código e copie o link.
+Com o repositório criado, vá em código e copie o link.
 
 <img style="border-radius: 1%;" src="assets/copiar-nome-repo.png" width="500px;" alt=""/>
 
@@ -74,7 +74,7 @@ Na janela aberta, escreva "git clone" dê um espaço e depois cole o link copiad
 
 <img style="border-radius: 1%;" src="assets/clonando.png" width="500px;" alt=""/>
 
-Pronto, agora com o projeto na máquina, sempre que houver alterações, basta seguir os comando de:
+Pronto, agora com o projeto na máquina, sempre que houver alterações, basta seguir os comandos:
 
 -  git add arquivosCriados
   
@@ -86,7 +86,7 @@ ou
 
 - git push
 
-Existem muitos outros comando e funcionalidades do git, o ideal é ir testando e entendendo no decorrer do aprendizado.
+Existem muitos outros comandos e funcionalidades do git, o ideal é ir testando e entendendo no decorrer do aprendizado.
 
 <br>
 
@@ -113,7 +113,7 @@ E então gerar o projeto.
 
 <img style="border-radius: 1%;" src="assets/startspringio.png" width="500px;" alt=""/>
 
-Basta extrair o arquivo zip baixando no diretório desejado e abrir esse projeto na IDE.
+Basta extrair o arquivo zip baixado no diretório desejado e abrir esse projeto na IDE.
 
 <img style="border-radius: 1%;" src="assets/open-projeto.png" width="500px;" alt=""/>
 
@@ -137,7 +137,7 @@ Agora é criar a seguinte estrutura de pacotes:
 Ficando assim:
 <img style="border-radius: 1%;" src="assets/estrutura-pacotes.png" width="500px;" alt=""/>
 
-obs: O nome do arquivo fica em vermelho por não estar adicionado ao git. 
+Obs: O nome do arquivo fica em vermelho por não estar adicionado ao git. 
 
 > Model
 
@@ -147,7 +147,7 @@ O nome da classe pode ser "Usuario".
 
 <img style="border-radius: 1%;" src="assets/cria-classe.png" width="500px;" alt=""/>
 
-Anote a classe com "@Entity" e importe seu pacote (No caso do IntelliJ basta selecionar Ctrl + Espaço que aparecerá as opções). As anotações dizem ao Spring qual o comportamento e funcionalidade a classe terá no sistema. Mas essa anotação pertence ao JPA para fazer o mapeamento da classe, assim como as demais anotações utilizadas nas classes de modelo.
+Anote a classe com "@Entity" e importe seu pacote (No caso do IntelliJ basta selecionar Ctrl + Espaço que aparecerão as opções). As anotações dizem ao Spring qual comportamento e funcionalidade a classe terá no sistema. Mas essa anotação pertence ao JPA para fazer o mapeamento da classe, assim como as demais anotações utilizadas nas classes de modelo.
 
 ```Java
 import javax.persistence.Entity;
@@ -201,7 +201,7 @@ Basta clicar com o botão direito (ou utilizar o atalho).
 
 ```
 
-Da mesma maneira criar uma classe para representar a mídia que o usuário consumiu. A anotação "@ManyToOne" é para dizer ao JPA que um "Usuario" pode ter vários objetos "Midia" associados a ele, criando uma relação no banco de dados seguindo o sentido da anotação. 
+Da mesma maneira criar uma classe para representar a mídia que o usuário consome. A anotação "@ManyToOne" é para dizer ao JPA que um "Usuario" pode ter vários objetos "Midia" associados a ele, criando uma relação no banco de dados seguindo o sentido da anotação. 
 
 ```Java
 @Entity
@@ -224,13 +224,13 @@ public class Midia {
 
 > Repository
 
-Da mesma maneira que as classes foram criadas, crie uma interface (batas alterar o nome Classe para Interface) com o mesmo nome do model seguido de "Repository" dentro do pacote repositories.
+Da mesma maneira que as classes foram criadas, crie uma interface (basta alterar o nome Classe para Interface) com o mesmo nome do model seguido de "Repository" dentro do pacote repositories.
 
-Ficando assim.
+Ficando assim:
 
 <img style="border-radius: 1%;" src="assets/model-e-repo-estrutura.png" width="500px;" alt=""/>
 
-Ao criar a interface estará assim.
+Ao criar a interface estará assim:
 
 ```Java
 public interface UsuarioRepository {
@@ -293,7 +293,7 @@ Com isso, a lógica do CRUD está implementada, já é possível criar, alterar,
 
 > Controllers
 
-Só falta implementar a porta de acesso da aplicação, crie uma classe no pacote "controllers" com o mesmo nome do model seguido de "Controller".
+Só falta implementar a porta de acesso da aplicação. Crie uma classe no pacote "controllers" com o mesmo nome do model seguido de "Controller".
 
 A implementação de "UsuarioController" fica assim:
 
@@ -361,7 +361,7 @@ spring.jpa.show-sql=true
 spring.mvc.pathmatch.matching-strategy=ant-path-matcher
 ```
 
-E com isso já podemos testar o backend no Postman, basta clicar com o botão direito na classe principal da aplicação "CrudApplication" e clicar na opção "run" (Ctrl + Shift + F10)
+E com isso já podemos testar o back-end no Postman, basta clicar com o botão direito na classe principal da aplicação "CrudApplication" e clicar na opção "run" (Ctrl + Shift + F10)
 
 <img style="border-radius: 1%;" src="assets/estrutura-back-end.png" width="500px;" alt=""/>
 
