@@ -12,6 +12,28 @@ Obs: Foi utilizado o Windows 10 como Sistema Operacional, então algumas altera�
 
 <br>
 
+## Essa aplicação faz o seguinte
+
+Um usuário cadastra seu nome e vai adicionando conteúdos que ele consome, como filmes, livros, animes e por aí vai.
+
+* [Pré-requisitos](#é-preciso-ter-instalado) 
+* [Passo a Passo](#agora-vamos-ao-passo-a-passo)
+  * [Git e GitHub](#git-e-github)
+  * [Back-end](#back-end)
+    * [Spring](#spring-boot)
+    * [Swagger](#swagger)
+    * [Postman](#postman)
+    * [SGBD](#sgbd)
+  * [Front-end](#front-end)
+    * [Angular](#back-end)
+    * [Bootstrap](#bootstrap)
+  *  [Testes](#testes)
+  *  [Deploy](#deploy)
+  
+* [Contato](#contato)
+
+<br>
+
 ## É preciso ter instalado
 
 
@@ -33,10 +55,6 @@ Obs: Foi utilizado o Windows 10 como Sistema Operacional, então algumas altera�
 - IDE (IntelliJ, Eclipse, etc...)
 
 - Postman (para testar a API antes de fazer o front-end)
-
-## Essa aplicação faz o seguinte
-
-Um usuário cadastra seu nome e vai adicionando conteúdos que ele consome, como filmes, livros, animes e por aí vai.
 
 <br>
 
@@ -90,7 +108,9 @@ Existem muitos outros comandos e funcionalidades do git, o ideal é ir testando 
 
 <br>
 
-## Back-end
+# Back-end
+
+## Spring Boot
 
 Abra o site "Spring Initializr".
 
@@ -355,8 +375,8 @@ server.port=8080
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.defer-datasource-initialization=true
 spring.datasource.url=jdbc:mysql://localhost:/crud-db?createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.username=login
+spring.datasource.password=senha
 spring.jpa.show-sql=true
 spring.mvc.pathmatch.matching-strategy=ant-path-matcher
 ```
@@ -365,4 +385,83 @@ E com isso já podemos testar o back-end no Postman, basta clicar com o botão d
 
 <img style="border-radius: 1%;" src="assets/estrutura-back-end.png" width="500px;" alt=""/>
 
-> Postman
+## Swagger
+
+Para ter uma boa documentação e entendermos bem nossa API, um bom caminho é utilizar o Swagger.
+
+Primeiro copie e cole as dependências do Swagger no arquivo "pom.xml" (ele está na mesma hierarquia do pacote "src"), dentro da tag "<dependencies></dependencies>" junto com as outras dependências da aplicação.
+
+```xml
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-boot-starter</artifactId>
+	<version>3.0.0</version>
+</dependency>
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>3.0.0</version>
+</dependency>
+```
+
+Obs: Alterações forem feitas no gerenciador de pacotes é preciso recarregar o Maven.
+
+<img style="border-radius: 1%;" src="assets/maven-reload.png" width="500px;" alt=""/>
+
+ Então é só criar um pacote chamado "configurations" para organizar classes com objetivo de configurar alguma funcionalidade da API. Depois basta criar uma classe chamada "SwaggerConfigurations" e implementar o código:
+
+```Java
+@Configuration
+public class SwaggerConfigurations {
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                //coloque o caminho do pacote controller no parâmetro do basePackage
+                .apis(RequestHandlerSelectors.basePackage("caminho.do.pacote.controller"))
+                .paths(PathSelectors.ant("/**"))
+                .build();
+
+    }
+}
+```
+
+Depois do projeto rodando é só colar a url "http://localhost:8081/swagger-ui/index.html" no seu navegador para abrir o Swagger UI.
+
+## Postman
+
+Agora podemos facilmente testar os endpoints de POST, GET, PUT e DELETE através do Postman.
+
+## SGBD
+
+# Front-end
+
+## Angular
+
+## Bootstrap
+
+
+
+## Testes
+
+## Deploy
+
+## Contato
+
+
+<address>
+  <a href="mailto:izzydays@hotmail.com">
+    <img src="assets/logomail.png" style="border-radius: 1%;" alt="Logo" width="45">
+  </a> 
+  <- Send me a mail
+<br><br>
+
+  <a href="https://www.linkedin.com/in/israellimadias/">
+    <img src="assets/logolinkedin.png" style="border-radius: 10%;" alt="Logo" width="42">
+  </a>
+  <- Let's connect   
+<br>
+</address>
+<br>
+
+<p align="center"> : ) </p>
