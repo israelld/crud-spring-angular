@@ -20,10 +20,12 @@ Um usuário cadastra seu nome e vai adicionando conteúdos que ele consome, como
 * [Passo a Passo](#agora-vamos-ao-passo-a-passo)
   * [Git e GitHub](#git-e-github)
   * [Back-end](#back-end)
+    * [Banco de Dados](#banco-de-dados)
     * [Spring](#spring-boot)
     * [Swagger](#swagger)
     * [Postman](#postman)
-    * [SGBD](#sgbd)
+    
+    
   * [Front-end](#front-end)
     * [Angular](#back-end)
     * [Bootstrap](#bootstrap)
@@ -42,19 +44,19 @@ Um usuário cadastra seu nome e vai adicionando conteúdos que ele consome, como
 
 - Java 8+
 
-- Banco de dados MySQL
+- Banco de dados MySQL 
+  - login e senha configurados
 
 - SGBD (DBeaver, Workbench)
+  - não é necessário para rodar a aplicação
 
 - Node.js LTS 
-
-- Angular CLI
 
 - Editor de texto (VScode, Atom, Notepad++, etc...)
 
 - IDE (IntelliJ, Eclipse, etc...)
 
-- Postman (para testar a API antes de fazer o front-end)
+- Postman (logado também)
 
 <br>
 
@@ -109,6 +111,18 @@ Existem muitos outros comandos e funcionalidades do git, o ideal é ir testando 
 <br>
 
 # Back-end
+
+<br>
+
+## Banco de Dados
+
+ (https://dev.mysql.com/downloads/installer/)
+
+ O login e senha do banco, após instalado, serão usados nas configurações da aplicação no arquivo application.properties.
+
+ As alterações feitas no pelo JPA poderão ser visualizadas no SGBD instalado.
+
+ <img style="border-radius: 1%;" src="assets/dbeaver-bd.png" width="500px;" alt=""/>
 
 ## Spring Boot
 
@@ -374,9 +388,10 @@ Por fim, é preciso "settar" algumas configurações no arquivo "applications.pr
 server.port=8080
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.defer-datasource-initialization=true
-spring.datasource.url=jdbc:mysql://localhost:/crud-db?createDatabaseIfNotExist=true
-spring.datasource.username=login
-spring.datasource.password=senha
+# altere removendo os colchetes
+spring.datasource.url=jdbc:mysql://localhost:/[NOME_DO_BANCO]?createDatabaseIfNotExist=true
+spring.datasource.username=[SEU_LOGIN]
+spring.datasource.password=[SUA_SENHA]
 spring.jpa.show-sql=true
 spring.mvc.pathmatch.matching-strategy=ant-path-matcher
 ```
@@ -430,9 +445,9 @@ Depois do projeto rodando é só colar a url "http://localhost:8081/swagger-ui/i
 
 ## Postman
 
-Agora podemos facilmente testar os endpoints de POST, GET, PUT e DELETE através do Postman.
+Agora podemos facilmente testar os endpoints de POST, GET, PUT e DELETE através do Postman. 
 
-## SGBD
+
 
 # Front-end
 
